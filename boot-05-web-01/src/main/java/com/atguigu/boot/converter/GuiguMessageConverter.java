@@ -15,21 +15,21 @@ import java.util.List;
 /**
  * 自定义的Converter
  */
-
 public class GuiguMessageConverter implements HttpMessageConverter<Person> {
 
     @Override
     public boolean canRead(Class<?> clazz, MediaType mediaType) {
-        return clazz.isAssignableFrom(Person.class);
+        return false;
     }
 
     @Override
     public boolean canWrite(Class<?> clazz, MediaType mediaType) {
-        return false;
+        return clazz.isAssignableFrom(Person.class);
     }
 
     /**
      * 服务器要统计所有MessageConverter都能写出哪些内容类型
+     * <p>
      * application/x-guigu
      *
      * @return
@@ -49,9 +49,9 @@ public class GuiguMessageConverter implements HttpMessageConverter<Person> {
         //自定义协议数据的写出
         String data = person.getUserName() + ";" + person.getAge() + ";" + person.getBirth();
 
+
         //写出去
         OutputStream body = outputMessage.getBody();
         body.write(data.getBytes());
-
     }
 }
