@@ -2,11 +2,13 @@ package com.atguigu.boot.config;
 
 
 import com.atguigu.boot.bean.Pet;
+import com.atguigu.boot.converter.GuiguMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.StringUtils;
 import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 import org.springframework.web.accept.ParameterContentNegotiationStrategy;
@@ -18,6 +20,7 @@ import org.springframework.web.util.UrlPathHelper;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Configuration(proxyBeanMethods = false)
@@ -56,10 +59,10 @@ public class WebConfig /*implements WebMvcConfigurer*/ {
                 configurer.strategies(Arrays.asList(parameterStrategy, headeStrategy));
             }
 
-//            @Override
-//            public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-//                converters.add(new GuiguMessageConverter());
-//            }
+            @Override
+            public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+                converters.add(new GuiguMessageConverter());
+            }
 
             @Override
             public void configurePathMatch(PathMatchConfigurer configurer) {
