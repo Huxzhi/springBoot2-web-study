@@ -3,3 +3,9 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+    contentnegotiation:
+      favor-parameter: true
+
+server:
+  servlet:
+    context-path: /world

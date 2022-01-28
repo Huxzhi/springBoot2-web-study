@@ -49,7 +49,6 @@ public class GuiguMessageConverter implements HttpMessageConverter<Person> {
         //自定义协议数据的写出
         String data = person.getUserName() + ";" + person.getAge() + ";" + person.getBirth();
 
-
         //写出去
         OutputStream body = outputMessage.getBody();
         body.write(data.getBytes());
