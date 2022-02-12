@@ -2,6 +2,7 @@ package com.atguigu.admin.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -12,7 +13,7 @@ public class TableController {
     }
 
     @GetMapping("/dynamic_table")
-    public String dynamic_table() {
+    public String dynamic_table(Model model) {
         return "table/dynamic_table";
     }
 
